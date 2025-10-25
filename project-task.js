@@ -21,7 +21,7 @@ The system must:
 ---
 🧭 Instructions:
 
-Step 1: Debug Standard Exceptions  
+Step 1: Debug Standard Exceptions
 - Run the starter code and identify the standard exceptions being thrown  
 - Correct the issues and observe output
 
@@ -42,21 +42,36 @@ Step 4: Test Your Solution
 // 🛠️ Starter Code: processFile Function
 // ============================================
 
+let simulatedFolder = [];
+
 function processFile(fileName, fileData) {
   try {
     // TODO: Add input validation here
-    
+    if (!fileName) {
+        throw new TypeError("File name is missing");
+    }
+    if (typeof fileData != "string") {
+        throw new TypeError("File data must be a string");
+    }
+    if (fileData.length == 0) {
+        throw new Error("File data cannot be empty");
+    }
+    if (!fileName) {
+        throw new ReferenceError("File name is missing");
+    }
     // TODO: Implement simulated file processing here
     console.log(`Processing file: ${fileName}`);
     console.log(`File content: ${fileData}`);
     
     // TODO: Add simulated file operations (reading/writing)
-    
+    simulatedFolder[fileName] = fileData;
   } catch (err) {
     // TODO: Implement error handling
     console.error(err);
-  }
+  } finally {
   // TODO: Implement a finally block to close resources
+    console.log("file successfully closed");
+  }
 }
 
 // ============================================
